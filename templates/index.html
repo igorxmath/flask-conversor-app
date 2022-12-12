@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta charset="utf-8">
+  <title>Converosr de medidas</title>
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- FONT
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+
+  <!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="stylesheet" href="{{url_for('static', filename='css/normalize.css')}}">
+  <link rel="stylesheet" href="{{url_for('static', filename='css/skeleton.css')}}">
+
+  <!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="icon" type="image/png" href="{{url_for('static', filename='images/favicon.png')}}">
+</head>
+
+<body>
+  <div class="container">
+    <!-- <h2>CONVERSOR DE MEDIDAS</h2> -->
+    <div class="six offset-by-three column" style="margin-top: 15%">
+      <form action="/" method="POST">
+        {{ form.csrf_token }}
+        <div class="row">
+          <div class="six columns">
+            <label for="exampleRecipientInput">Quero converter:</label>
+            {{ form.measure(class="u-full-width") }}
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="six columns">
+            <label for="exampleEmailInput">Valor a ser convertido:</label>
+            {{ form.numberofdatain(class="u-full-width", type="Number") }}
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="six columns">
+            <label for="exampleRecipientInput">Para:</label>
+            {{ form.mconverted(class="u-full-width") }}
+          </div>
+        </div>
+
+        <button class="button-primary" type="submit">Enviar</button>
+
+        {% if result %}
+        <div class="row">
+          <div class="five offset-by-two column">
+          <h3>Resultado: {{ result }}</h3>
+          </div>
+        </div>
+        {% endif %}
+
+      </form>
+    </div>
+  </div>
+
+</body>
+</html>
